@@ -1,0 +1,23 @@
+1.jquery的ajax中不指定content-type为json实际默认是用的x-www-form-urlencoded方式提交对象，并将对象转为String 如{a:1,b:2}--->'a=1&b=2'
+2.若指定content-type为application/json;charset=utf-8实际需要将对象字符串化JSON.stringify
+
+
+
+后台接收1可以直接 (Integer a ,Integer b) 或 有一个bean包含a，b属性(SomeBean obj)
+后台接收2需要有一个bean包含a，b属性(@requestBody SomeBean obj)
+
+
+a=1&b=2&list[0].id=22
+这种urlencoded方式可直接给bean中的list赋值
+但是由于jquery的字符串化代码不支持(list[0][id]=22)，故无法传递给后台
+
+
+
+@RequestParam
+用来处理ContentType: 为 application/x-www-form-urlencoded编码的内容
+@RequestBody
+该注解常用来处理Content-Type: 不是application/x-www-form-urlencoded编码的内容，例如application/json, application/xml等； 接收的是一个Json对象的字符串，而不是一个Json对象。在ajax请求往往传的都是Json对象，用 JSON.stringify(data)的方式就能将对象变成字符串。
+
+shadowsocks !!!!!!
+
+怎样选择成长股 书
